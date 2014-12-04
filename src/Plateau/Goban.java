@@ -18,6 +18,7 @@ public class Goban {
     
     public Goban(int taille){
         this.taille=taille;
+        cases = new Case[taille][taille];
         for (int i=0; i<taille; i++){
             for (int j=0; j<taille; j++){
                 cases[i][j]=new Case(i,j);
@@ -31,8 +32,17 @@ public class Goban {
     public int getTaille() {
         return taille;
     }
+    /**
+     * Méthode retournant la case située en i, j sur le plateau
+     * @param i : abscisse de la case
+     * @param j : ordonnée de la case
+     * @return la Case en question
+     */
+    public Case getCase(int i, int j){
+        return cases[i][j];
+    }
     public boolean horsPlateau(int a, int b){
-        return (a>=0 && a<taille && b>=0 && b<taille);
+        return (!(a>=0 && a<taille && b>=0 && b<taille));
     }
     public List<Case> getCasesAutourDe(Case pos){
         ArrayList<Case> a= new ArrayList<>();
