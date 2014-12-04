@@ -5,6 +5,9 @@
  */
 package Plateau;
 
+import java.util.ArrayList;
+import java.util.List;
+
 /**
  * Classe décrivant le goban.
  * @author Fabien
@@ -28,5 +31,23 @@ public class Goban {
     public int getTaille() {
         return taille;
     }
-    
+    public boolean horsPlateau(int a, int b){
+        return (a>=0 && a<taille && b>=0 && b<taille);
+    }
+    public List<Case> getCasesAutourDe(Case pos){
+        ArrayList<Case> a= new ArrayList<>();
+        if(!horsPlateau(pos.getX()-1, pos.getY())){
+            a.add(cases[pos.getX()-1][pos.getY()]);
+        }
+        if(!horsPlateau(pos.getX()+1, pos.getY())){
+            a.add(cases[pos.getX()+1][pos.getY()]);
+        }
+        if(!horsPlateau(pos.getX(), pos.getY()+1)){
+            a.add(cases[pos.getX()][pos.getY()+1]);
+        }
+        if(!horsPlateau(pos.getX(), pos.getY()-1)){
+            a.add(cases[pos.getX()][pos.getY()-1]);
+        }
+        return a;
+    }
 }
