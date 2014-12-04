@@ -46,7 +46,7 @@ public class Case {
      * Si aucune pierre n'est posée, le joueur est null.
      * @return le joueur en question.
      */
-    public Joueur getP() {
+    public Joueur getJoueur() {
         return p;
     }
     /**
@@ -55,5 +55,12 @@ public class Case {
      */
     public int getY() {
         return y;
+    }
+    /**
+     * Méthode permettant de changer le joueur qui controle la case
+     * @param p de type Joueur
+     */
+    public void setJoueur(Joueur p){
+        this.p=p;
     }
 }
