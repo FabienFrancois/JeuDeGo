@@ -9,7 +9,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
- *
+ * Classe décrivant une case du goban.
  * @author Fabien
  */
 public class Case {
@@ -57,7 +57,7 @@ public class Case {
         return y;
     }
     /**
-     * Méthode permettant de changer le joueur qui controle la case
+     * Méthode permettant de changer le joueur qui contrôle la case
      * @param p de type Joueur
      */
     public void setJoueur(Joueur p){
