@@ -5,9 +5,6 @@
  */
 package Plateau;
 
-import java.util.ArrayList;
-import java.util.List;
-
 /**
  * Classe décrivant une case du goban.
  * @author Fabien

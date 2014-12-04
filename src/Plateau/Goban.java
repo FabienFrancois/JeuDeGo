@@ -6,6 +6,7 @@
 package Plateau;
 
 import java.util.ArrayList;
+import java.util.List;
 
 /**
  * Classe décrivant le goban.
@@ -17,6 +18,7 @@ public class Goban {
     
     public Goban(int taille){
         this.taille=taille;
+        cases = new Case[taille][taille];
         for (int i=0; i<taille; i++){
             for (int j=0; j<taille; j++){
                 cases[i][j]=new Case(i,j);
@@ -59,7 +61,7 @@ public class Goban {
     private int nombreLibertésAutourDe(Case pos) {
         int n=0;
         ArrayList<Case> a = new ArrayList();
-            a=getCasesAutourDe(pos);
+            a=(ArrayList<Case>) getCasesAutourDe(pos);
             for(int i=0;i<a.size();i++){
                 if(caseLibre(a.get(i))){
                     n++;
@@ -69,6 +71,32 @@ public class Goban {
         return n;
     }
     
-    
-    
+    /**
+     * Méthode retournant la case située en i, j sur le plateau
+     * @param i : abscisse de la case
+     * @param j : ordonnée de la case
+     * @return la Case en question
+     */
+    public Case getCase(int i, int j){
+        return cases[i][j];
+    }
+    public boolean horsPlateau(int a, int b){
+        return (!(a>=0 && a<taille && b>=0 && b<taille));
+    }
+    public List<Case> getCasesAutourDe(Case pos){
+        ArrayList<Case> a= new ArrayList<>();
+        if(!horsPlateau(pos.getX()-1, pos.getY())){
+            a.add(cases[pos.getX()-1][pos.getY()]);
+        }
+        if(!horsPlateau(pos.getX()+1, pos.getY())){
+            a.add(cases[pos.getX()+1][pos.getY()]);
+        }
+        if(!horsPlateau(pos.getX(), pos.getY()+1)){
+            a.add(cases[pos.getX()][pos.getY()+1]);
+        }
+        if(!horsPlateau(pos.getX(), pos.getY()-1)){
+            a.add(cases[pos.getX()][pos.getY()-1]);
+        }
+        return a;
+    }
 }
