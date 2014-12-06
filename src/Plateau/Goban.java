@@ -6,6 +6,7 @@
 package Plateau;
 
 import java.util.ArrayList;
+import java.util.LinkedList;
 import java.util.List;
 
 /**
@@ -15,13 +16,14 @@ import java.util.List;
 public class Goban {
     private int taille;
     private Case cases[][];
+    private LinkedList<Groupe> groupes;
     
     public Goban(int taille){
         this.taille=taille;
         cases = new Case[taille][taille];
         for (int i=0; i<taille; i++){
             for (int j=0; j<taille; j++){
-                cases[i][j]=new Case(i,j);
+                cases[i][j]=new Case(i,j,this);
             }
         }
     }
@@ -33,43 +35,6 @@ public class Goban {
         return taille;
     }
     
-    /**
-     * Permet de savoir si une case est libre ou pas (si il y a déjà une pierre dessus)
-     * @param pos
-     * @return 
-     */
-    public boolean caseLibre(Case pos){
-        boolean a;
-        if (pos.getJoueur()==null){
-            a=true;
-        }
-        else{
-            a=false;
-        }
-        return a;
-    }
-    
-    public boolean caseJouable(Case pos){
-        boolean a;
-        a=(caseLibre(pos)||!(horsPlateau(pos.getX(),pos.getY())));
-        if(nombreLibertésAutourDe(pos)<1){
-            a=false;
-        }
-        return a;
-    }
-
-    private int nombreLibertésAutourDe(Case pos) {
-        int n=0;
-        ArrayList<Case> a = new ArrayList();
-            a=(ArrayList<Case>) getCasesAutourDe(pos);
-            for(int i=0;i<a.size();i++){
-                if(caseLibre(a.get(i))){
-                    n++;
-                }
-            }
-            
-        return n;
-    }
     
     /**
      * Méthode retournant la case située en i, j sur le plateau
@@ -80,9 +45,12 @@ public class Goban {
     public Case getCase(int i, int j){
         return cases[i][j];
     }
+    
+    
     public boolean horsPlateau(int a, int b){
         return (!(a>=0 && a<taille && b>=0 && b<taille));
     }
+    
     public List<Case> getCasesAutourDe(Case pos){
         ArrayList<Case> a= new ArrayList<>();
         if(!horsPlateau(pos.getX()-1, pos.getY())){
@@ -98,5 +66,14 @@ public class Goban {
             a.add(cases[pos.getX()][pos.getY()-1]);
         }
         return a;
+    }
+    
+    public boolean isDansGroupe(Case c){
+        for (Groupe g : groupes){
+            if (g.getPierres().contains(c)){
+                return true;
+            }
+        }
+        return false;
     }
 }
