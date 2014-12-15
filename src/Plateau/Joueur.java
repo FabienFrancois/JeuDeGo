@@ -16,6 +16,7 @@ public class Joueur {
     private int score;
     private boolean passe;
     private Goban goban;
+    private int nbPierresCapturees;
     
     /**
      * Constructeur par défault de Joueur, initialise la valeur de score à 0.
@@ -24,6 +25,7 @@ public class Joueur {
         score=0;
         this.goban = null;
         this.passe = false;
+        nbPierresCapturees=0;
     }
     
     /**
@@ -34,6 +36,7 @@ public class Joueur {
         score=a;
         this.goban = null;
         this.passe = false;
+        nbPierresCapturees=0;
     }
     
     public Joueur (Goban g){
@@ -45,6 +48,13 @@ public class Joueur {
         this.goban=g;
     }
 
+    public int getNbPierresCapturees() {
+        return nbPierresCapturees;
+    }
+
+    public void setNbPierresCapturees(int nbPierresCapturees) {
+        this.nbPierresCapturees = nbPierresCapturees;
+    }
     /**
      * Permet d'accéder à la valeur de score
      * @return 
