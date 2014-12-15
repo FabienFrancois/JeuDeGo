@@ -50,4 +50,15 @@ public class Groupe {
     public boolean isCapture(){
         return (this.getLiberte().isEmpty());
     }
+    
+    /**
+     * Enlève un groupe de pierres capturées du plateau
+     */
+    public void pierresCapturees(){
+        if(isCapture()){
+            for(Case c1 : pierres){
+                c1.setJoueur(null);
+            }
+        }
+    }
 }
