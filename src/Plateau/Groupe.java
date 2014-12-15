@@ -60,6 +60,12 @@ public class Groupe {
      */
     public void pierresCapturees(){
         if(isCapture()){
+            if(pierres.get(0).getJoueur().equals(g.getPlayer1())){
+                g.getPlayer2().setNbPierresCapturees(g.getPlayer2().getNbPierresCapturees()+pierres.size());
+            }
+            else{
+                g.getPlayer1().setNbPierresCapturees(g.getPlayer1().getNbPierresCapturees()+pierres.size());
+            }
             for(Case c1 : pierres){
                 c1.setJoueur(null);
             }
