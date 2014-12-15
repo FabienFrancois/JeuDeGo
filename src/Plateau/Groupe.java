@@ -65,4 +65,9 @@ public class Groupe {
             }
         }
     }
+    
+    public void absorbGroupe(Groupe groupe){
+        this.pierres.addAll(groupe.getPierres());
+        this.g.retirerGroupe(groupe);
+    }
 }

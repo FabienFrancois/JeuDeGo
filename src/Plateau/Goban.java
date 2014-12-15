@@ -95,6 +95,16 @@ public class Goban {
         return false;
     }
     
+    public void retirerGroupe(Groupe g){
+        groupes.remove(g);
+    }
+    
+    public void addGroupe(Case p){
+        Groupe g = new Groupe();
+        g.addPierre(p);
+        groupes.add(g);
+    }
+    
     public void tourDeJeu(){
         player1.jouer();
         player2.jouer();
