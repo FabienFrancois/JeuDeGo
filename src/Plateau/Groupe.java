@@ -6,7 +6,7 @@
 package Plateau;
 
 import java.util.ArrayList;
-import java.util.LinkedList;
+import java.util.HashSet;
 
 /**
  * Représente un groupe de pierres adjacentes.
@@ -39,11 +39,15 @@ public class Groupe {
     }
     
     public ArrayList<Case> getLiberte(){
-        ArrayList<Case> lib = new ArrayList<>();
+        HashSet<Case> libSet = new HashSet<>();
         for (Case c1 : pierres){
-            lib.removeAll(this.g.getCasesAutourDe(c1));
-            lib.addAll(this.g.getCasesAutourDe(c1));
+            for(Case c : this.g.getCasesAutourDe(c1)){
+                if (c.caseLibre()){
+                    libSet.add(c);
+                }
+            }
         }
+        ArrayList<Case> lib = new ArrayList<>(libSet);
         return lib;
     }
     
