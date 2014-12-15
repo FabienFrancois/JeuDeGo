@@ -17,6 +17,8 @@ public class Goban {
     private int taille;
     private Case cases[][];
     private LinkedList<Groupe> groupes;
+    private Joueur player1;
+    private Joueur player2;
     
     public Goban(int taille){
         this.taille=taille;
@@ -28,13 +30,29 @@ public class Goban {
         }
     }
     /**
+     * Permet de changer la case en position i,j sur le goban
+     * @param i abscisse de la case
+     * @param j ordonnée de la case
+     * @param p la nouvelle case
+     */
+    public void setCase(int i, int j, Case p){
+        this.cases[i][j]=p;
+    }
+    /**
      * Méthode retournant la taille du goban
      * @return int : taille
      */
     public int getTaille() {
         return taille;
     }
-    
+
+    public Joueur getPlayer1() {
+        return player1;
+    }
+
+    public Joueur getPlayer2() {
+        return player2;
+    }
     
     /**
      * Méthode retournant la case située en i, j sur le plateau
@@ -75,5 +93,10 @@ public class Goban {
             }
         }
         return false;
+    }
+    
+    public void tourDeJeu(){
+        player1.jouer();
+        player2.jouer();
     }
 }

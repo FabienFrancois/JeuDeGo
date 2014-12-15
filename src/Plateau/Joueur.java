@@ -5,6 +5,8 @@
 
 package Plateau;
 
+import java.util.Scanner;
+
 /**
  *Représente un des deux joueurs
  * @author arigoure
@@ -12,13 +14,17 @@ package Plateau;
 public class Joueur {
     
     private int score;
+    private boolean passe;
+    private Goban goban;
     
     /**
      * Constructeur par défault de Joueur, initialise la valeur de score à 0.
      */
     public Joueur(){
-            score=0;
-            }
+        score=0;
+        this.goban = null;
+        this.passe = false;
+    }
     
     /**
      * Constructeur permettant la création d'un joueur ayant un score déterminé
@@ -26,8 +32,17 @@ public class Joueur {
      */
     public Joueur(int a){
         score=a;
-        
-        
+        this.goban = null;
+        this.passe = false;
+    }
+    
+    public Joueur (Goban g){
+        this();
+        this.goban=g;
+    }
+    public Joueur (int a, Goban g){
+        this(a);
+        this.goban=g;
     }
 
     /**
@@ -45,6 +60,9 @@ public class Joueur {
     public void setScore(int score) {
         this.score = score;
     }
+    public void setPasse(boolean p){
+        this.passe = p;
+    }
     
    /**
     * Permet au joueur de jouer une pierre, en attribuant un joueur à une case du plateau
@@ -52,6 +70,20 @@ public class Joueur {
     */
     public void ajoutPierre(Case pos){
         pos.setJoueur(this);
-        
+    }
+    
+    public void jouer(){
+        if(!passe){
+            ajoutPierre(choixCase());
+        }
+    }
+    public Case choixCase(){
+        Scanner console = new Scanner(System.in);
+        System.out.println("Entrez l'abscisse de la case");
+        int a = console.nextInt();
+        System.out.println("Entrez l'ordonnée de la case");
+        int b = console.nextInt();
+        Case c = new Case(a, b, goban);
+        return c;
     }
 }
