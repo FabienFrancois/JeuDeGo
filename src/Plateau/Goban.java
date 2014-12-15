@@ -20,7 +20,7 @@ public class Goban {
     private Joueur player1;
     private Joueur player2;
     
-    public Goban(int taille, Joueur player1, Joueur player2){
+    public Goban(int taille){
         this.taille=taille;
         cases = new Case[taille][taille];
         for (int i=0; i<taille; i++){
@@ -28,8 +28,8 @@ public class Goban {
                 cases[i][j]=new Case(i,j,this);
             }
         }
-        this.player1 = player1;
-        this.player2 = player2;
+        this.player1 = new Joueur(this);
+        this.player2 = new Joueur(this);
     }
     /**
      * Permet de changer la case en position i,j sur le goban
