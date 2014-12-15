@@ -106,7 +106,7 @@ public class Goban {
     }
     
     public void addGroupe(Case p){
-        Groupe g = new Groupe();
+        Groupe g = new Groupe(this);
         g.addPierre(p);
         groupes.add(g);
     }
@@ -114,5 +114,18 @@ public class Goban {
     public void tourDeJeu(){
         player1.jouer();
         player2.jouer();
+    }
+    
+    public boolean isSuicide(Case pos, Joueur j){
+        Groupe g  = new Groupe(this);
+        g.addPierre(pos);
+        for(Groupe g1 : pos.getGroupesAdjacents()){
+            if(g1.getPierres().get(0).getJoueur().equals(j)){
+                g.getPierres().addAll(g1.getPierres());
+            }
+        }
+        ArrayList<Case> lib = g.getLiberte();
+        lib.remove(pos);
+        return (lib.isEmpty());
     }
 }

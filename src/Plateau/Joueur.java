@@ -93,6 +93,9 @@ public class Joueur {
     public void jouer(){
         if(!passe){
             ajoutPierre(choixCase());
+            for (Groupe g : goban.getGroupes()){
+                g.pierresCapturees();
+            }
         }
     }
     public Case choixCase(){

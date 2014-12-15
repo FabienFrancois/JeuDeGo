@@ -69,6 +69,7 @@ public class Groupe {
             for(Case c1 : pierres){
                 c1.setJoueur(null);
             }
+            g.retirerGroupe(this);
         }
     }
     
