@@ -71,7 +71,7 @@ public class Goban {
         return (!(a>=0 && a<taille && b>=0 && b<taille));
     }
     
-    public List<Case> getCasesAutourDe(Case pos){
+    public ArrayList<Case> getCasesAutourDe(Case pos){
         ArrayList<Case> a= new ArrayList<>();
         if(!horsPlateau(pos.getX()-1, pos.getY())){
             a.add(cases[pos.getX()-1][pos.getY()]);
@@ -86,6 +86,10 @@ public class Goban {
             a.add(cases[pos.getX()][pos.getY()-1]);
         }
         return a;
+    }
+
+    public LinkedList<Groupe> getGroupes() {
+        return groupes;
     }
     
     public boolean isDansGroupe(Case c){

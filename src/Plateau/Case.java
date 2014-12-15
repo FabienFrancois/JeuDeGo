@@ -6,6 +6,7 @@
 package Plateau;
 
 import java.util.ArrayList;
+import java.util.HashSet;
 
 /**
  * Classe décrivant une case du goban.
@@ -119,6 +120,25 @@ public class Case {
             
         return n;
     }
+    
+    public Groupe getGroupe(){
+        for (Groupe grp : g.getGroupes()){
+            if (grp.getPierres().contains(this)){
+                return grp;
+            }
+        }
+        return null;
+    }
+    
+    public ArrayList<Groupe> getGroupesAdjacents(){
+        HashSet<Groupe> groupes = new HashSet<>();
+        ArrayList<Case> cases = g.getCasesAutourDe(this);
+        for (Case c : cases){
+                groupes.add(c.getGroupe());
+        }
+        return new ArrayList<>(groupes);
+    }
+    
     
     
 }
