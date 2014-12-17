@@ -18,6 +18,7 @@ public class Joueur {
     private boolean passe;
     private Goban goban;
     private int nbPierresCapturees;
+    private Couleur couleur;
     
     /**
      * Constructeur par défault de Joueur, initialise la valeur de score à 0.
@@ -27,6 +28,7 @@ public class Joueur {
         this.goban = null;
         this.passe = false;
         nbPierresCapturees=0;
+        couleur = null;
     }
     
     /**
@@ -38,6 +40,20 @@ public class Joueur {
         this.goban = null;
         this.passe = false;
         nbPierresCapturees=0;
+        couleur = null;
+    }
+    
+    /**
+     * Constructeur permettant la création d'un joueur ayant un score déterminé
+     * @param a 
+     * @param coul 
+     */
+    public Joueur(int a, Couleur coul){
+        score=a;
+        this.goban = null;
+        this.passe = false;
+        nbPierresCapturees=0;
+        couleur = coul;
     }
     
     public Joueur (Goban g){
@@ -46,6 +62,10 @@ public class Joueur {
     }
     public Joueur (int a, Goban g){
         this(a);
+        this.goban=g;
+    }
+    public Joueur (int a, Couleur coul, Goban g){
+        this(a, coul);
         this.goban=g;
     }
 
@@ -71,6 +91,11 @@ public class Joueur {
     public void setScore(int score) {
         this.score = score;
     }
+    
+    public Couleur getCouleur(){
+        return couleur;
+    }
+    
     public void setPasse(boolean p){
         this.passe = p;
     }

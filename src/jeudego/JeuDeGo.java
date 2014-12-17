@@ -4,7 +4,8 @@
  * and open the template in the editor.
  */
 package jeudego;
-
+import Plateau.*;
+import Affichage.*;
 /**
  *
  * @author Fabien
@@ -16,6 +17,9 @@ public class JeuDeGo {
      */
     public static void main(String[] args) {
         // TODO code application logic here
+        Goban g = new Goban(9);
+        AffichageConsole aff = new AffichageConsole(g);
+        aff.affichePlateau();
     }
     
 }
