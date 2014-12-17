@@ -134,7 +134,9 @@ public class Case {
         HashSet<Groupe> groupes = new HashSet<>();
         ArrayList<Case> cases = g.getCasesAutourDe(this);
         for (Case c : cases){
+            if (c.getGroupe() != null) {
                 groupes.add(c.getGroupe());
+            }
         }
         return new ArrayList<>(groupes);
     }

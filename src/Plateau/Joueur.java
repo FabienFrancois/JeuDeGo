@@ -111,6 +111,7 @@ public class Joueur {
         for (Groupe g : grps){
             if (g.getPierres().get(0).getJoueur().equals(this)){
                 pos.getGroupe().absorbGroupe(g);
+            } else {
             }
         }
     }

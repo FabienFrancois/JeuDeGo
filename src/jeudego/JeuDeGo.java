@@ -18,6 +18,8 @@ public class JeuDeGo {
     public static void main(String[] args) {
         // TODO code application logic here
         Goban g = new Goban(9);
+        Joueur blanc = new Joueur(0, Couleur.Blanc,g);
+        blanc.ajoutPierre(g.getCase(0, 0));
         AffichageConsole aff = new AffichageConsole(g);
         aff.affichePlateau();
     }

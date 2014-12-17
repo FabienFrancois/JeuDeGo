@@ -30,6 +30,7 @@ public class Goban {
         }
         this.player1 = new Joueur(this);
         this.player2 = new Joueur(this);
+        groupes = new LinkedList<>();
     }
     /**
      * Permet de changer la case en position i,j sur le goban
