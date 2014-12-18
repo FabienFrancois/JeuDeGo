@@ -109,11 +109,6 @@ public class Joueur {
     
     public void setPasse(boolean p){
         this.passe = p;
-        if (p){
-            goban.incrPasse();
-        } else {
-            goban.resetPasse();
-        }
     }
     
    /**
@@ -136,31 +131,42 @@ public class Joueur {
         System.out.println("Joueur " + couleur);
         Scanner console = new Scanner(System.in);
         String s = "";
+        this.setPasse(false);
         do{
-            System.out.println("Souhaitez-vous passer ? o/n");
-            s = console.nextLine();
-        }while (!"n".equals(s) && !"o".equals(s));
-        this.setPasse("o".equals(s));
-        if(!passe){
-            ajoutPierre(choixCase());
-            for (Groupe g : goban.getGroupes()){
-                g.pierresCapturees();
+            do{
+                System.out.println("Souhaitez-vous passer ? o/n");
+                s = console.nextLine();
+            }while (!"n".equals(s) && !"o".equals(s));
+            this.setPasse("o".equals(s));
+            s = "";
+            if(!passe){
+                Case c = choixCase();
+                if (c != null){
+                    ajoutPierre(c);
+                    for (Groupe g : goban.getGroupes()){
+                        g.pierresCapturees();
+                    }
+                    goban.resetPasse();
+                        break;
+                }
+            } else {
+                goban.incrPasse();
             }
-        }
+        } while(!this.passe);
     }
+    
     public Case choixCase(){
         Case c;
-        do{
-            Scanner console = new Scanner(System.in);
-            System.out.println("Entrez l'abscisse de la case");
-            int a = console.nextInt();
-            System.out.println("Entrez l'ordonnée de la case");
-            int b = console.nextInt();
-            c = goban.getCase(a, b);
-            if (c.getJoueur() != null){
-                System.out.println("Cette case est occupée, veuillez en sélectionner une autre.");
-            }
-        } while(c.getJoueur() != null);
+        Scanner console = new Scanner(System.in);
+        System.out.println("Entrez l'abscisse de la case");
+        int a = console.nextInt();
+        System.out.println("Entrez l'ordonnée de la case");
+        int b = console.nextInt();
+        c = goban.getCase(a, b);
+        if (c == null || c.getJoueur() != null || goban.isSuicide(c, this)){
+            System.out.println("Cette case n'est pas disponible.");
+            c = null;
+        }
         return c;
     }
 }

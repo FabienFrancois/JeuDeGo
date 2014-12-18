@@ -67,7 +67,11 @@ public class Goban {
      * @return la Case en question
      */
     public Case getCase(int i, int j){
-        return cases[i][j];
+        Case c = null;
+        if (i>=0 && j>=0 && i<taille && j<taille){
+            c = cases[i][j];
+        }
+        return c;
     }
     
     
@@ -118,10 +122,18 @@ public class Goban {
     public void tourDeJeu(){
         AffichageConsole aff = new AffichageConsole(this);
         aff.affichePlateau();
-        while (passe < 2){
-            player1.jouer();
-            player2.jouer();
-        }
+        int compteur = 0;
+        do{
+            if (compteur == 0){
+                player1.jouer();
+                aff.affichePlateau();
+                compteur++;
+            } else {
+                player2.jouer();
+                aff.affichePlateau();
+                compteur--;
+            }
+        }while (passe < 2);
     }
     
     public boolean isSuicide(Case pos, Joueur j){
@@ -143,5 +155,9 @@ public class Goban {
     
     public void resetPasse(){
         passe = 0;
+    }
+    
+    public void getPasse(){
+        System.out.println(passe);
     }
 }
