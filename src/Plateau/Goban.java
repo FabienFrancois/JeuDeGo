@@ -5,6 +5,7 @@
  */
 package Plateau;
 
+import Affichage.AffichageConsole;
 import java.util.ArrayList;
 import java.util.LinkedList;
 import java.util.List;
@@ -19,17 +20,19 @@ public class Goban {
     private LinkedList<Groupe> groupes;
     private Joueur player1;
     private Joueur player2;
+    private int passe;
     
     public Goban(int taille){
         this.taille=taille;
+        passe = 0;
         cases = new Case[taille][taille];
         for (int i=0; i<taille; i++){
             for (int j=0; j<taille; j++){
                 cases[i][j]=new Case(i,j,this);
             }
         }
-        this.player1 = new Joueur(this);
-        this.player2 = new Joueur(this);
+        this.player1 = new Joueur(Couleur.Noir, this);
+        this.player2 = new Joueur(Couleur.Blanc, this);
         groupes = new LinkedList<>();
     }
     /**
@@ -113,8 +116,12 @@ public class Goban {
     }
     
     public void tourDeJeu(){
-        player1.jouer();
-        player2.jouer();
+        AffichageConsole aff = new AffichageConsole(this);
+        aff.affichePlateau();
+        while (passe < 2){
+            player1.jouer();
+            player2.jouer();
+        }
     }
     
     public boolean isSuicide(Case pos, Joueur j){
@@ -128,5 +135,13 @@ public class Goban {
         ArrayList<Case> lib = g.getLiberte();
         lib.remove(pos);
         return (lib.isEmpty());
+    }
+    
+    public void incrPasse(){
+        passe++;
+    }
+    
+    public void resetPasse(){
+        passe = 0;
     }
 }

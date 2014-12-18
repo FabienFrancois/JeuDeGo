@@ -31,6 +31,13 @@ public class Joueur {
         couleur = null;
     }
     
+    public Joueur(Couleur coul){
+        score=0;
+        this.goban = null;
+        this.passe = false;
+        nbPierresCapturees=0;
+        couleur = coul;
+    }
     /**
      * Constructeur permettant la création d'un joueur ayant un score déterminé
      * @param a 
@@ -58,6 +65,10 @@ public class Joueur {
     
     public Joueur (Goban g){
         this();
+        this.goban=g;
+    }
+    public Joueur (Couleur coul, Goban g){
+        this(coul);
         this.goban=g;
     }
     public Joueur (int a, Goban g){
@@ -98,6 +109,11 @@ public class Joueur {
     
     public void setPasse(boolean p){
         this.passe = p;
+        if (p){
+            goban.incrPasse();
+        } else {
+            goban.resetPasse();
+        }
     }
     
    /**
@@ -117,6 +133,14 @@ public class Joueur {
     }
     
     public void jouer(){
+        System.out.println("Joueur " + couleur);
+        Scanner console = new Scanner(System.in);
+        String s = "";
+        do{
+            System.out.println("Souhaitez-vous passer ? o/n");
+            s = console.nextLine();
+        }while (!"n".equals(s) && !"o".equals(s));
+        this.setPasse("o".equals(s));
         if(!passe){
             ajoutPierre(choixCase());
             for (Groupe g : goban.getGroupes()){
@@ -125,12 +149,18 @@ public class Joueur {
         }
     }
     public Case choixCase(){
-        Scanner console = new Scanner(System.in);
-        System.out.println("Entrez l'abscisse de la case");
-        int a = console.nextInt();
-        System.out.println("Entrez l'ordonnée de la case");
-        int b = console.nextInt();
-        Case c = new Case(a, b, goban);
+        Case c;
+        do{
+            Scanner console = new Scanner(System.in);
+            System.out.println("Entrez l'abscisse de la case");
+            int a = console.nextInt();
+            System.out.println("Entrez l'ordonnée de la case");
+            int b = console.nextInt();
+            c = goban.getCase(a, b);
+            if (c.getJoueur() != null){
+                System.out.println("Cette case est occupée, veuillez en sélectionner une autre.");
+            }
+        } while(c.getJoueur() != null);
         return c;
     }
 }

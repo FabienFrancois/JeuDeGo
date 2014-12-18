@@ -10,6 +10,17 @@ package Plateau;
  * @author akagami
  */
 public enum Couleur {
-    Blanc,
-    Noir;
+    Blanc ("Blanc"),
+    Noir ("Noir");
+    
+    private String name = "";
+   
+    //Constructeur
+    Couleur(String name){
+        this.name = name;
+    }
+
+    public String toString(){
+        return name;
+    }
 }
