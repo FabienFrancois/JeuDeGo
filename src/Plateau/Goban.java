@@ -132,7 +132,6 @@ public class Goban {
                 compteur--;
             }
             aff.affichePlateau();
-            System.out.println(groupes.size());
         }while (passe < 2);
     }
     
@@ -146,7 +145,12 @@ public class Goban {
         }
         ArrayList<Case> lib = g.getLiberte();
         lib.remove(pos);
-        return (lib.isEmpty());
+        ArrayList<Groupe> grps = pos.getGroupesAdjacents();
+        boolean b = (grps.size()== 1 && grps.get(0).getPierres().get(0).getJoueur() != j && pos.nombreLibertésAutourDe() == 0 && 
+                grps.get(0).getLiberte().size() == 1 && grps.get(0).getLiberte().get(0) == pos);
+        // b est vrai si la case est entièrement entourée par un seul groupe, si ce groupe appartient au joueur enemi,
+        // et si ce groupe n'a que cette case pour liberté. Le dernier test est potentiellement inutile.
+        return (lib.isEmpty() && !b);
     }
     
     public void incrPasse(){
