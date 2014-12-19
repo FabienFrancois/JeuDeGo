@@ -18,12 +18,18 @@ public class AffichageConsole {
     }
     
     public void affichePlateau(){
+        System.out.print("   ");
         for (int i = 0; i < g.getTaille(); i++){
+            System.out.print(i + " ");
+        }
+        System.out.println();
+        for (int i = 0; i < g.getTaille(); i++){
+            System.out.print(i+" ");
             for (int j = 0; j < g.getTaille(); j++){
                 System.out.print("|");
-                if (g.getCase(i, j).caseLibre()){
+                if (g.getCase(j, i).caseLibre()){
                     System.out.print("_");
-                } else if (g.getCase(i, j).getJoueur().getCouleur().equals(Couleur.Blanc)){
+                } else if (g.getCase(j, i).getJoueur().getCouleur().equals(Couleur.Blanc)){
                     System.out.print("o");
                 } else {
                     System.out.print("x");
@@ -31,5 +37,6 @@ public class AffichageConsole {
             }
             System.out.println("|");
         }
+        System.out.println(" ");
     }
 }

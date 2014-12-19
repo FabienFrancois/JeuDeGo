@@ -126,13 +126,12 @@ public class Goban {
         do{
             if (compteur == 0){
                 player1.jouer();
-                aff.affichePlateau();
                 compteur++;
             } else {
                 player2.jouer();
-                aff.affichePlateau();
                 compteur--;
             }
+            aff.affichePlateau();
         }while (passe < 2);
     }
     
