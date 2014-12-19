@@ -143,8 +143,11 @@ public class Joueur {
                 Case c = choixCase();
                 if (c != null){
                     ajoutPierre(c);
-                    for (Groupe g : goban.getGroupes()){
-                        g.pierresCapturees();
+                    for (int i = 0 ; i < goban.getGroupes().size(); i++){
+                        if (goban.getGroupes().get(i).isCapture()){
+                            goban.getGroupes().get(i).pierresCapturees();
+                            i--;
+                        }
                     }
                     goban.resetPasse();
                         break;

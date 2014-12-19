@@ -18,6 +18,10 @@ public class JeuDeGo {
     public static void main(String[] args) {
         // TODO code application logic here
         Goban g = new Goban(9);
+        g.getPlayer1().ajoutPierre(g.getCase(0, 1));
+        g.getPlayer1().ajoutPierre(g.getCase(2, 1));
+        g.getPlayer1().ajoutPierre(g.getCase(1, 0));
+        g.getPlayer2().ajoutPierre(g.getCase(1, 1));
         g.tourDeJeu();
     }
     

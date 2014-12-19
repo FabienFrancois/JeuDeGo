@@ -132,6 +132,7 @@ public class Goban {
                 compteur--;
             }
             aff.affichePlateau();
+            System.out.println(groupes.size());
         }while (passe < 2);
     }
     
