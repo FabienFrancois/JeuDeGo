@@ -162,9 +162,19 @@ public class Joueur {
         Case c;
         Scanner console = new Scanner(System.in);
         System.out.println("Entrez l'abscisse de la case");
-        int a = console.nextInt();
+        int a,b;
+        try{
+            a = Integer.parseInt(console.nextLine());
+        } catch (NumberFormatException e) {
+            a = -1;
+        }
         System.out.println("Entrez l'ordonnée de la case");
-        int b = console.nextInt();
+        try{
+            b = Integer.parseInt(console.nextLine());
+        } catch (NumberFormatException e) {
+            b = -1;
+        }
+        
         c = goban.getCase(a, b);
         if (c == null || c.getJoueur() != null || goban.isSuicide(c, this)){
             System.out.println("Cette case n'est pas disponible.");
