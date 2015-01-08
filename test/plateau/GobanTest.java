@@ -3,8 +3,10 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package Plateau;
+package plateau;
 
+import plateau.Goban;
+import plateau.Case;
 import java.util.ArrayList;
 import org.junit.AfterClass;
 import org.junit.BeforeClass;

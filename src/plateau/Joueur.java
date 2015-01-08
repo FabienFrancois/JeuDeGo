@@ -3,7 +3,7 @@
  * and open the template in the editor.
  */
 
-package Plateau;
+package plateau;
 
 import java.util.ArrayList;
 import java.util.Scanner;

@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package Plateau;
+package plateau;
 
 import Affichage.AffichageConsole;
 import java.util.ArrayList;
@@ -16,8 +16,8 @@ import java.util.List;
  */
 public class Goban {
     private int taille;
-    private Case cases[][];
-    private LinkedList<Groupe> groupes;
+    private Case[][] cases;
+    private List<Groupe> groupes;
     private Joueur player1;
     private Joueur player2;
     private int passe;
@@ -76,7 +76,7 @@ public class Goban {
     
     
     public boolean horsPlateau(int a, int b){
-        return (!(a>=0 && a<taille && b>=0 && b<taille));
+        return !(a>=0 && a<taille && b>=0 && b<taille);
     }
     
     public ArrayList<Case> getCasesAutourDe(Case pos){
@@ -96,7 +96,7 @@ public class Goban {
         return a;
     }
 
-    public LinkedList<Groupe> getGroupes() {
+    public List<Groupe> getGroupes() {
         return groupes;
     }
     
@@ -146,11 +146,11 @@ public class Goban {
         ArrayList<Case> lib = g.getLiberte();
         lib.remove(pos);
         ArrayList<Groupe> grps = pos.getGroupesAdjacents();
-        boolean b = (grps.size()== 1 && grps.get(0).getPierres().get(0).getJoueur() != j && pos.nombreLibertésAutourDe() == 0 && 
-                grps.get(0).getLiberte().size() == 1 && grps.get(0).getLiberte().get(0) == pos);
+        boolean b = grps.size()== 1 && grps.get(0).getPierres().get(0).getJoueur() != j && pos.nombreLibertésAutourDe() == 0 && 
+                grps.get(0).getLiberte().size() == 1;
         // b est vrai si la case est entièrement entourée par un seul groupe, si ce groupe appartient au joueur enemi,
-        // et si ce groupe n'a que cette case pour liberté. Le dernier test est potentiellement inutile.
-        return (lib.isEmpty() && !b);
+        // et si ce groupe n'a qu'une liberté.
+        return lib.isEmpty() && !b;
     }
     
     public void incrPasse(){
@@ -159,9 +159,5 @@ public class Goban {
     
     public void resetPasse(){
         passe = 0;
-    }
-    
-    public void getPasse(){
-        System.out.println(passe);
     }
 }

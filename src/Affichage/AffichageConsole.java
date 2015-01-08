@@ -4,7 +4,8 @@
  * and open the template in the editor.
  */
 package Affichage;
-import Plateau.*;
+import plateau.Goban;
+import plateau.Couleur;
 /**
  *
  * @author akagami
