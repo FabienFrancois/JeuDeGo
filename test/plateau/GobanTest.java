@@ -57,9 +57,9 @@ public class GobanTest {
     public void testGetCasesAutourDe() {
         System.out.println("getCasesAutourDe");
         Goban g= new Goban(9);
-        assertEquals(2, g.getCasesAutourDe(g.getCase(0,0)).size());
-        assertEquals(4, g.getCasesAutourDe(g.getCase(2,3)).size());
-        assertEquals(3, g.getCasesAutourDe(g.getCase(5,0)).size());
+        assertEquals(2, ((ArrayList<Case>)g.getCasesAutourDe(g.getCase(0,0))).size());
+        assertEquals(4, ((ArrayList<Case>)g.getCasesAutourDe(g.getCase(2,3))).size());
+        assertEquals(3, ((ArrayList<Case>)g.getCasesAutourDe(g.getCase(5,0))).size());
         ArrayList<Case> a= new ArrayList<>();
         a.add(g.getCase(1, 0));
         a.add(g.getCase(0, 1));
