@@ -6,6 +6,7 @@
 package plateau;
 
 import java.util.ArrayList;
+import java.util.List;
 import org.junit.AfterClass;
 import org.junit.BeforeClass;
 import org.junit.Test;
@@ -169,12 +170,12 @@ public class GroupeTest {
         g.addGroupe(g.getCase(1, 2));
         g.addGroupe(g.getCase(1, 4));
         assertEquals(7, g.getGroupes().size());
-        ArrayList<Groupe> grps = g.getCase(1, 4).getGroupesAdjacents();
+        List<Groupe> grps = (ArrayList)g.getCase(1, 4).getGroupesAdjacents();
         for (Groupe gr : grps){
             g.getCase(1, 4).getGroupe().absorbGroupe(gr);
         }
         assertEquals(5, g.getGroupes().size());
-        ArrayList<Groupe> grpsbis = g.getCase(1, 2).getGroupesAdjacents();
+        List<Groupe> grpsbis = (ArrayList)g.getCase(1, 2).getGroupesAdjacents();
         for (Groupe gr : grpsbis){
             g.getCase(1, 2).getGroupe().absorbGroupe(gr);
         }

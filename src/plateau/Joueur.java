@@ -6,6 +6,7 @@
 package plateau;
 
 import java.util.ArrayList;
+import java.util.List;
 import java.util.Scanner;
 
 /**
@@ -117,7 +118,7 @@ public class Joueur {
     */
     public void ajoutPierre(Case pos){
         pos.setJoueur(this);
-        ArrayList<Groupe> grps = pos.getGroupesAdjacents();
+        List<Groupe> grps = (ArrayList)pos.getGroupesAdjacents();
         goban.addGroupe(pos);
         for (Groupe g : grps){
             if (g.getPierres().get(0).getJoueur().equals(this)){

@@ -7,6 +7,7 @@ package plateau;
 
 import java.util.ArrayList;
 import java.util.HashSet;
+import java.util.List;
 
 /**
  * Classe décrivant une case du goban.
@@ -111,7 +112,7 @@ public class Case {
 
     public int nombreLibertesAutourDe() {
         int n=0;
-        ArrayList<Case> a = (ArrayList<Case>) g.getCasesAutourDe(this);
+        List<Case> a = g.getCasesAutourDe(this);
         for (Case a1 : a) {
             if (a1.caseLibre()) {
                 n++;
@@ -130,7 +131,7 @@ public class Case {
         return null;
     }
     
-    public ArrayList<Groupe> getGroupesAdjacents(){
+    public List<Groupe> getGroupesAdjacents(){
         HashSet<Groupe> groupes = new HashSet<>();
         ArrayList<Case> cases = g.getCasesAutourDe(this);
         for (Case c : cases){
@@ -138,7 +139,7 @@ public class Case {
                 groupes.add(c.getGroupe());
             }
         }
-        return new ArrayList<>(groupes);
+        return (List)new ArrayList<>(groupes);
     }
     
     

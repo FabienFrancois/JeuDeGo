@@ -145,7 +145,7 @@ public class Goban {
         }
         ArrayList<Case> lib = g.getLiberte();
         lib.remove(pos);
-        ArrayList<Groupe> grps = pos.getGroupesAdjacents();
+        List<Groupe> grps = pos.getGroupesAdjacents();
         boolean b = grps.size()== 1 && grps.get(0).getPierres().get(0).getJoueur() != j && pos.nombreLibertesAutourDe() == 0 && 
                 grps.get(0).getLiberte().size() == 1;
         // b est vrai si la case est entièrement entourée par un seul groupe, si ce groupe appartient au joueur enemi,
