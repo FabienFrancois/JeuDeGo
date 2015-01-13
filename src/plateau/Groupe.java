@@ -40,7 +40,7 @@ public class Groupe {
         pierres.add(pierre);
     }
     
-    public ArrayList<Case> getLiberte(){
+    public List<Case> getLiberte(){
         Set<Case> libSet = new HashSet<>();
         for (Case c1 : pierres){
             for(Case c : (ArrayList<Case>)this.g.getCasesAutourDe(c1)){
@@ -49,7 +49,7 @@ public class Groupe {
                 }
             }
         }
-        ArrayList<Case> lib = new ArrayList<>(libSet);
+        List<Case> lib = new ArrayList<>(libSet);
         return lib;
     }
     

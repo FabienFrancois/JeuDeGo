@@ -143,7 +143,7 @@ public class Goban {
                 (g.getPierres()).addAll(g1.getPierres());
             }
         }
-        List<Case> lib = g.getLiberte();
+        List<Case> lib = (ArrayList<Case>)g.getLiberte();
         lib.remove(pos);
         List<Groupe> grps = pos.getGroupesAdjacents();
         boolean b = grps.size()== 1 && grps.get(0).getPierres().get(0).getJoueur() != j && pos.nombreLibertesAutourDe() == 0 && 
