@@ -21,6 +21,7 @@ public class Goban {
     private Joueur player1;
     private Joueur player2;
     private int passe;
+    private final int NUMBER_OF_PLAYERS = 2;
     
     public Goban(int taille){
         this.taille=taille;
@@ -132,7 +133,7 @@ public class Goban {
                 compteur--;
             }
             aff.affichePlateau();
-        }while (passe < 2);
+        }while (passe < NUMBER_OF_PLAYERS);
     }
     
     public boolean isSuicide(Case pos, Joueur j){

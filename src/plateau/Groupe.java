@@ -49,8 +49,7 @@ public class Groupe {
                 }
             }
         }
-        List<Case> lib = new ArrayList<>(libSet);
-        return lib;
+        return new ArrayList<>(libSet);
     }
     
     public boolean isCapture(){
