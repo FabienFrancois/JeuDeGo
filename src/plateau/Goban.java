@@ -80,7 +80,7 @@ public class Goban {
     }
     
     public ArrayList<Case> getCasesAutourDe(Case pos){
-        ArrayList<Case> a= new ArrayList<>();
+        List<Case> a= new ArrayList<>();
         if(!horsPlateau(pos.getX()-1, pos.getY())){
             a.add(cases[pos.getX()-1][pos.getY()]);
         }
@@ -93,7 +93,7 @@ public class Goban {
         if(!horsPlateau(pos.getX(), pos.getY()-1)){
             a.add(cases[pos.getX()][pos.getY()-1]);
         }
-        return a;
+        return (ArrayList<Case>)a;
     }
 
     public List<Groupe> getGroupes() {
@@ -143,7 +143,7 @@ public class Goban {
                 g.getPierres().addAll(g1.getPierres());
             }
         }
-        ArrayList<Case> lib = g.getLiberte();
+        List<Case> lib = g.getLiberte();
         lib.remove(pos);
         List<Groupe> grps = pos.getGroupesAdjacents();
         boolean b = grps.size()== 1 && grps.get(0).getPierres().get(0).getJoueur() != j && pos.nombreLibertesAutourDe() == 0 && 

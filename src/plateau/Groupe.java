@@ -7,6 +7,7 @@ package plateau;
 
 import java.util.ArrayList;
 import java.util.HashSet;
+import java.util.Set;
 
 /**
  * Représente un groupe de pierres adjacentes.
@@ -39,7 +40,7 @@ public class Groupe {
     }
     
     public ArrayList<Case> getLiberte(){
-        HashSet<Case> libSet = new HashSet<>();
+        Set<Case> libSet = new HashSet<>();
         for (Case c1 : pierres){
             for(Case c : this.g.getCasesAutourDe(c1)){
                 if (c.caseLibre()){
