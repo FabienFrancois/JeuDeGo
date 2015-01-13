@@ -113,7 +113,7 @@ public class Case {
 
     public int nombreLibertesAutourDe() {
         int n=0;
-        List<Case> a = (ArrayList)g.getCasesAutourDe(this);
+        List<Case> a = (ArrayList<Case>)g.getCasesAutourDe(this);
         for (Case a1 : a) {
             if (a1.caseLibre()) {
                 n++;
@@ -134,7 +134,7 @@ public class Case {
     
     public List<Groupe> getGroupesAdjacents(){
         Set<Groupe> groupes = new HashSet<>();
-        List<Case> cases = (ArrayList)g.getCasesAutourDe(this);
+        List<Case> cases = (ArrayList<Case>)g.getCasesAutourDe(this);
         for (Case c : cases){
             if (c.getGroupe() != null) {
                 groupes.add(c.getGroupe());

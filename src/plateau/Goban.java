@@ -79,7 +79,7 @@ public class Goban {
         return !(a>=0 && a<taille && b>=0 && b<taille);
     }
     
-    public ArrayList<Case> getCasesAutourDe(Case pos){
+    public List<Case> getCasesAutourDe(Case pos){
         List<Case> a= new ArrayList<>();
         if(!horsPlateau(pos.getX()-1, pos.getY())){
             a.add(cases[pos.getX()-1][pos.getY()]);
@@ -93,7 +93,7 @@ public class Goban {
         if(!horsPlateau(pos.getX(), pos.getY()-1)){
             a.add(cases[pos.getX()][pos.getY()-1]);
         }
-        return (ArrayList<Case>)a;
+        return a;
     }
 
     public List<Groupe> getGroupes() {

@@ -42,7 +42,7 @@ public class Groupe {
     public ArrayList<Case> getLiberte(){
         Set<Case> libSet = new HashSet<>();
         for (Case c1 : pierres){
-            for(Case c : this.g.getCasesAutourDe(c1)){
+            for(Case c : (ArrayList<Case>)this.g.getCasesAutourDe(c1)){
                 if (c.caseLibre()){
                     libSet.add(c);
                 }
