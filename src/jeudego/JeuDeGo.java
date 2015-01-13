@@ -5,7 +5,6 @@
  */
 package jeudego;
 import plateau.Goban;
-import Affichage.*;
 /**
  *
  * @author Fabien

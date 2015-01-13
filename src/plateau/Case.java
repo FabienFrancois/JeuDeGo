@@ -97,19 +97,19 @@ public class Case {
      * @return 
      */
     public boolean caseLibre(){
-        return (this.p==null);
+        return this.p==null;
     }
     
     public boolean caseJouable(){
         boolean a;
         a=(caseLibre()||!(this.g.horsPlateau(this.x,this.y)));
-        if(nombreLibertésAutourDe()<1){
+        if(nombreLibertesAutourDe()<1){
             a=false;
         }
         return a;
     }
 
-    public int nombreLibertésAutourDe() {
+    public int nombreLibertesAutourDe() {
         int n=0;
         ArrayList<Case> a = (ArrayList<Case>) g.getCasesAutourDe(this);
         for (Case a1 : a) {

@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package Affichage;
+package affichage;
 import plateau.Goban;
 import plateau.Couleur;
 /**
@@ -30,7 +30,7 @@ public class AffichageConsole {
                 System.out.print("|");
                 if (g.getCase(j, i).caseLibre()){
                     System.out.print("_");
-                } else if (g.getCase(j, i).getJoueur().getCouleur().equals(Couleur.Blanc)){
+                } else if (g.getCase(j, i).getJoueur().getCouleur().equals(Couleur.BLANC)){
                     System.out.print("o");
                 } else {
                     System.out.print("x");

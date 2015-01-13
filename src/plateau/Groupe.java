@@ -52,7 +52,7 @@ public class Groupe {
     }
     
     public boolean isCapture(){
-        return (this.getLiberte().isEmpty());
+        return this.getLiberte().isEmpty();
     }
     
     /**
@@ -62,8 +62,7 @@ public class Groupe {
         if(isCapture()){
             if(pierres.get(0).getJoueur().equals(g.getPlayer1())){
                 g.getPlayer2().setNbPierresCapturees(g.getPlayer2().getNbPierresCapturees()+pierres.size());
-            }
-            else{
+            } else{
                 g.getPlayer1().setNbPierresCapturees(g.getPlayer1().getNbPierresCapturees()+pierres.size());
             }
             for(Case c1 : pierres){

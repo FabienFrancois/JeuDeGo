@@ -10,8 +10,8 @@ package plateau;
  * @author akagami
  */
 public enum Couleur {
-    Blanc ("Blanc"),
-    Noir ("Noir");
+    BLANC ("Blanc"),
+    NOIR ("Noir");
     
     private String name = "";
    

@@ -5,7 +5,7 @@
  */
 package plateau;
 
-import Affichage.AffichageConsole;
+import affichage.AffichageConsole;
 import java.util.ArrayList;
 import java.util.LinkedList;
 import java.util.List;
@@ -31,8 +31,8 @@ public class Goban {
                 cases[i][j]=new Case(i,j,this);
             }
         }
-        this.player1 = new Joueur(Couleur.Noir, this);
-        this.player2 = new Joueur(Couleur.Blanc, this);
+        this.player1 = new Joueur(Couleur.NOIR, this);
+        this.player2 = new Joueur(Couleur.BLANC, this);
         groupes = new LinkedList<>();
     }
     /**
@@ -146,7 +146,7 @@ public class Goban {
         ArrayList<Case> lib = g.getLiberte();
         lib.remove(pos);
         ArrayList<Groupe> grps = pos.getGroupesAdjacents();
-        boolean b = grps.size()== 1 && grps.get(0).getPierres().get(0).getJoueur() != j && pos.nombreLibertésAutourDe() == 0 && 
+        boolean b = grps.size()== 1 && grps.get(0).getPierres().get(0).getJoueur() != j && pos.nombreLibertesAutourDe() == 0 && 
                 grps.get(0).getLiberte().size() == 1;
         // b est vrai si la case est entièrement entourée par un seul groupe, si ce groupe appartient au joueur enemi,
         // et si ce groupe n'a qu'une liberté.
