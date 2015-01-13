@@ -121,7 +121,7 @@ public class Joueur {
         List<Groupe> grps = (ArrayList)pos.getGroupesAdjacents();
         goban.addGroupe(pos);
         for (Groupe g : grps){
-            if (g.getPierres().get(0).getJoueur().equals(this)){
+            if (((ArrayList<Case>)g.getPierres()).get(0).getJoueur().equals(this)){
                 pos.getGroupe().absorbGroupe(g);
             }
         }

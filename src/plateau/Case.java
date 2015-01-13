@@ -125,7 +125,7 @@ public class Case {
     
     public Groupe getGroupe(){
         for (Groupe grp : g.getGroupes()){
-            if (grp.getPierres().contains(this)){
+            if (((ArrayList<Case>)grp.getPierres()).contains(this)){
                 return grp;
             }
         }

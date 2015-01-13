@@ -101,7 +101,7 @@ public class Goban {
     }
     
     public boolean isDansGroupe(Case c){
-        for (Groupe g : groupes){
+        for (Groupe g : (ArrayList<Groupe>)groupes){
             if (g.getPierres().contains(c)){
                 return true;
             }
@@ -139,8 +139,8 @@ public class Goban {
         Groupe g  = new Groupe(this);
         g.addPierre(pos);
         for(Groupe g1 : pos.getGroupesAdjacents()){
-            if(g1.getPierres().get(0).getJoueur().equals(j)){
-                g.getPierres().addAll(g1.getPierres());
+            if(((ArrayList<Case>)g1.getPierres()).get(0).getJoueur().equals(j)){
+                (g.getPierres()).addAll(g1.getPierres());
             }
         }
         List<Case> lib = g.getLiberte();

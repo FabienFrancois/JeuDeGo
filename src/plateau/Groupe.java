@@ -7,6 +7,7 @@ package plateau;
 
 import java.util.ArrayList;
 import java.util.HashSet;
+import java.util.List;
 import java.util.Set;
 
 /**
@@ -14,7 +15,7 @@ import java.util.Set;
  * @author Benjamin
  */
 public class Groupe {
-    private ArrayList<Case> pierres;
+    private List<Case> pierres;
     private Goban g;
     
     public Groupe(){
@@ -31,7 +32,7 @@ public class Groupe {
         this.g = g;
     }
     
-    public ArrayList<Case> getPierres(){
+    public List<Case> getPierres(){
         return pierres;
     }
     
