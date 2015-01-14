@@ -21,7 +21,7 @@ public class Goban {
     private Joueur player1;
     private Joueur player2;
     private int passe;
-    private final int NUMBER_OF_PLAYERS = 2;
+    private static final int NUMBER_OF_PLAYERS = 2;
     
     public Goban(int taille){
         this.taille=taille;
