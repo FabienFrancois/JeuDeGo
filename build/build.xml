@@ -1,0 +1,115 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project name="JeuDeGo" default="build" basedir=".">
+	<description>Compile et test le projet de jeu de go du TP de MEDEV</description>
+	
+	<target name ="checkDependencies"
+			description="Check dependencies">
+		<property name="src.location" location ="../src"/>
+		<property name="test.location" location ="../test"/>
+		<condition property="dependencies.available">
+			<and>
+				<available file="${src.location}" type="dir"/> 
+				<available file="${test.location}" type="dir"/>
+			</and>
+		</condition>
+	</target>
+	
+	<target name="checkJUnit"
+			description="Check if JUnit jar is present">
+		<property name="lib.location" location="lib"/>
+		<property name="jUnit.file" location="${lib.location}/junit-4.4.jar"/>
+		<condition property="jUnit.available">
+			<available file="${jUnit.file}" type="file"/> 
+		</condition>
+	</target>
+	
+	<target name="downloadJUnit"
+			description="Downloads JUnit if not already present"
+			depends="checkJUnit" unless="jUnit.available">
+		<mkdir dir="${lib.location}"/>
+		<get src="http://central.maven.org/maven2/junit/junit/4.4/junit-4.4.jar"
+			dest="${jUnit.file}"/>
+	</target>
+	
+	<target name = "appBuild"
+			description = "Builds and jars the app">
+		
+		<property name="app.bin" location="classes"/>
+		<mkdir dir="${app.bin}"/>
+		<javac srcdir="${src.location}"
+			destdir="${app.bin}">
+		</javac>
+		
+		<jar destfile="release/app.jar">
+			<fileset dir="${app.bin}"/>
+		</jar>
+	</target>
+
+
+	<target name="jUnitBuild"
+			description="Builds and jars JUnit tests"
+			depends="checkDependencies, downloadJUnit, appBuild" if="dependencies.available">
+		
+		<path id="jUnit.path">
+			<fileset dir="${lib.location}">
+				<include name="junit-4.4.jar"/>
+			</fileset>
+		
+		</path>	
+		<property name="test.bin" location="bin/test"/>
+		<mkdir dir="${test.bin}"/>
+		<javac srcdir="${test.location}"
+			destdir="${test.bin}">
+			<classpath>
+				<path refid="jUnit.path"/>
+				<pathelement path="${app.bin}"/>
+			</classpath>
+		</javac>
+		
+		<mkdir dir="release"/>
+		<jar destfile="release/test.jar">
+			<fileset dir="${test.bin}"/>
+		</jar>
+	</target>
+	
+	<target name="jUnit"
+			description="Runs JUnit tests"
+			depends="downloadJUnit, jUnitBuild">
+		<junit haltonfailure="yes">
+			<classpath>
+				<path refid="junit.path"/>
+				<pathelement location="${app.bin}"/>
+				<pathelement location="${test.bin}"/>
+			</classpath>
+		</junit>
+	</target>
+	
+	<target name = "javadoc"
+		description = "Generates javadoc for the project">
+		
+		<mkdir dir = "release/javadoc"/>
+		<javadoc sourcepath="${src.location}"
+			destdir = "release/javadoc">
+		</javadoc>
+	</target>
+	
+	<target name="sonar:runcheck">
+		<property name="sonar.host.url" value="http://localhost:9000"/>
+		<condition property="sonar.running" value="true">
+			<http url="${sonar.host.url}"/>
+		</condition>
+		<fail unless="sonar.running"/>
+	</target>
+	
+	<target name="sonar:run" 
+		depends="sonar:runcheck">
+		<property name="sonarrunner.bin" location="/home/thomas/Documents/MEDEV/Claroline.MEDEV.tp-sonar/sonar-runner-2.4/bin/sonar-runner"/>
+		<exec executable="${sonarrunner.bin}" osfamily="unix" dir="${basedir}/../"/>
+	</target>
+	
+	<target name="build"
+		depends="jUnit, javadoc,sonar:run">
+		<delete dir = "bin"/>
+		<delete dir = "classes"/>
+	</target>
+</project>
