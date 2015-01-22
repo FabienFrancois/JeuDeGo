@@ -1,2 +1,8 @@
 /nbproject/private/
-/build/
+/.jacocoverage/
+*.jar
+*.war
+*.ear
+.mtj.tmp/
+*.class
+*.properties
