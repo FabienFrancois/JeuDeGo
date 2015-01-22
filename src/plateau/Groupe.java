@@ -17,29 +17,46 @@ import java.util.Set;
 public class Groupe {
     private List<Case> pierres;
     private Goban g;
-    
+    /**
+     * Constructeur basique.
+     */
     public Groupe(){
         this.pierres = new ArrayList<>();
         this.g = null;
     }
-    
+    /**
+     * Constructeur qui associe un plateau au groupe.
+     * @param g de type Goban : Le plateau associé.
+     */
     public Groupe(Goban g){
         this.pierres = new ArrayList<>();
         this.g = g;
     }
-    
+    /**
+     * Permet de changer le plateau du groupe.
+     * @param g de type Goban : Le nouveau plateau.
+     */
     public void setGoban(Goban g){
         this.g = g;
     }
-    
+    /**
+     * Permet d'accéder à la liste des pierres du groupe.
+     * @return de type List<Case> : La liste des pierres.
+     */
     public List<Case> getPierres(){
         return pierres;
     }
-    
+    /**
+     * Permet d'ajouter une pierre au groupe.
+     * @param pierre de type Case : La pierre à ajouter.
+     */
     public void addPierre(Case pierre){
         pierres.add(pierre);
     }
-    
+    /**
+     * Permet de calculer les libertés de l'ensemble des cases d'un groupe.
+     * @return de type List<Case> : Les cases correspondants aux libertés du groupe.
+     */
     public List<Case> getLiberte(){
         Set<Case> libSet = new HashSet<>();
         for (Case c1 : pierres){
@@ -51,7 +68,10 @@ public class Groupe {
         }
         return new ArrayList<>(libSet);
     }
-    
+    /**
+     * Permet de déterminer si un groupe est capturé.
+     * @return de type boolean : true si le groupe est capturé.
+     */
     public boolean isCapture(){
         return this.getLiberte().isEmpty();
     }
@@ -72,7 +92,10 @@ public class Groupe {
             g.retirerGroupe(this);
         }
     }
-    
+    /**
+     * Permet de faire fusionner deux groupes adjacents.
+     * @param groupe de type Groupe : Le groupe à absorber.
+     */
     public void absorbGroupe(Groupe groupe){
         this.pierres.addAll(groupe.getPierres());
         this.g.retirerGroupe(groupe);

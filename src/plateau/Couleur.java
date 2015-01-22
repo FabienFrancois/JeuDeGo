@@ -6,7 +6,7 @@
 package plateau;
 
 /**
- *
+ * Enumération permettant de déterminer les couleurs des joueurs de go.
  * @author akagami
  */
 public enum Couleur {

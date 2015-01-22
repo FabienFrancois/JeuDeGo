@@ -31,7 +31,10 @@ public class Joueur {
         nbPierresCapturees=0;
         couleur = null;
     }
-    
+    /**
+     * Constructeur permettant de définir la couleur du joueur.
+     * @param coul de type Couleur : La couleur du joueur créé.
+     */
     public Joueur(Couleur coul){
         score=0;
         this.goban = null;
@@ -40,8 +43,8 @@ public class Joueur {
         couleur = coul;
     }
     /**
-     * Constructeur permettant la création d'un joueur ayant un score déterminé
-     * @param a 
+     * Constructeur permettant la création d'un joueur ayant un score déterminé.
+     * @param a de type Integer : Le score du joueur créé.
      */
     public Joueur(int a){
         score=a;
@@ -52,9 +55,9 @@ public class Joueur {
     }
     
     /**
-     * Constructeur permettant la création d'un joueur ayant un score déterminé
-     * @param a 
-     * @param coul 
+     * Constructeur permettant la création d'un joueur ayant un score et une couleur déterminés.
+     * @param a de type Integer : Le score du joueur créé.
+     * @param coul de type Couleur : La couleur du joueur créé.
      */
     public Joueur(int a, Couleur coul){
         score=a;
@@ -63,58 +66,89 @@ public class Joueur {
         nbPierresCapturees=0;
         couleur = coul;
     }
-    
+    /**
+     * Constructeur permettant d'associer un plateau de jeu au joueur créé.
+     * @param g de type Goban : Le plateau de jeu associé au joueur.
+     */
     public Joueur (Goban g){
         this();
         this.goban=g;
     }
+    /**
+     * Constructeur permettant d'associer un plateau de jeu et une couleur au joueur créé.
+     * @param coul de type Couleur : La couleur du joueur créé.
+     * @param g de type Goban : Le plateau de jeu associé au joueur.
+     */
     public Joueur (Couleur coul, Goban g){
         this(coul);
         this.goban=g;
     }
+    /**
+     * Constructeur permettant d'associer un plateau de jeu et un score au joueur créé.
+     * @param a de type Integer : Le score du joueur créé.
+     * @param g de type Goban : Le plateau de jeu associé au joueur.
+     */
     public Joueur (int a, Goban g){
         this(a);
         this.goban=g;
     }
+    /**
+     * Constructeur permettant d'associer un plateau de jeu, un score et une couleur au joueur créé.
+     * @param a de type Integer : Le score du joueur créé.
+     * @param coul de type Couleur : La couleur du joueur créé.
+     * @param g de type Goban : Le plateau de jeu associé au joueur.
+     */
     public Joueur (int a, Couleur coul, Goban g){
         this(a, coul);
         this.goban=g;
     }
-
+    /**
+     * Donne le nombre de pierres capturées par le joueur.
+     * @return de type Integer : Le nombre de pierres capturées.
+     */
     public int getNbPierresCapturees() {
         return nbPierresCapturees;
     }
-
+    /**
+     * Change le nombre de pierres capturées par le joueur.
+     * @param nbPierresCapturees de type Integer : Le nouveau nombre de pierres.
+     */
     public void setNbPierresCapturees(int nbPierresCapturees) {
         this.nbPierresCapturees = nbPierresCapturees;
     }
     /**
-     * Permet d'accéder à la valeur de score
-     * @return 
+     * Permet d'accéder à la valeur de score.
+     * @return de type Integer : Le score.
      */
     public int getScore() {
         return score;
     }
 
     /**
-     * Permet de modifier la valeur de score
-     * @param score 
+     * Permet de modifier la valeur de score.
+     * @param score de type Integer : La nouvelle valeur de score.
      */
     public void setScore(int score) {
         this.score = score;
     }
-    
+    /**
+     * Renvoie la couleur du joueur.
+     * @return de type Couleur : La couleur du joueur.
+     */
     public Couleur getCouleur(){
         return couleur;
     }
-    
+    /**
+     * Permet de modifier la valeur de passe.
+     * @param p de type boolean : La nouvelle valeur.
+     */
     public void setPasse(boolean p){
         this.passe = p;
     }
     
    /**
     * Permet au joueur de jouer une pierre, en attribuant un joueur à une case du plateau
-    * @param pos 
+    * @param pos de type Case : La position de la case où jouer la pierre.
     */
     public void ajoutPierre(Case pos){
         pos.setJoueur(this);
@@ -126,7 +160,9 @@ public class Joueur {
             }
         }
     }
-    
+    /**
+     * Réalise le déroulement d'un tour de jeu pour le joueur.
+     */
     public void jouer(){
         System.out.println("Joueur " + couleur);
         Scanner console = new Scanner(System.in);
@@ -157,7 +193,10 @@ public class Joueur {
             }
         } while(!this.passe);
     }
-    
+    /**
+     * Permet au joueur de choisir la case où jouer sa pierre.
+     * @return de type Case : La case sélectionnée.
+     */
     public Case choixCase(){
         Case c;
         Scanner console = new Scanner(System.in);
