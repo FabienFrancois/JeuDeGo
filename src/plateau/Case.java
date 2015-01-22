@@ -104,7 +104,7 @@ public class Case {
     
     public boolean caseJouable(){
         boolean a;
-        a=(caseLibre()||!(this.g.horsPlateau(this.x,this.y)));
+        a=(caseLibre()&&!(this.g.horsPlateau(this.x,this.y)));
         if(nombreLibertesAutourDe()<1){
             a=false;
         }
