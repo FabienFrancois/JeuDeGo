@@ -144,7 +144,7 @@ public class Case {
     }
     /**
      * Donne les groupes adjacents à une case.
-     * @return de type List<Groupe> : La liste des groupes adjacents à la case.
+     * @return de type List(Groupe) : La liste des groupes adjacents à la case.
      */
     public List<Groupe> getGroupesAdjacents(){
         Set<Groupe> groupes = new HashSet<>();

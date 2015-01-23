@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<project name="JeuDeGo" default="build" basedir=".">
+<project name="JeuDeGo" default="clean" basedir=".">
 	<description>Compile et test le projet de jeu de go du TP de MEDEV</description>
 	
 	<target name ="checkDependencies"
@@ -107,7 +107,7 @@
 		<exec executable="${sonarrunner.bin}" osfamily="unix" dir="${basedir}/../"/>
 	</target>
 	
-	<target name="build"
+	<target name="clean"
 		depends="jUnit, javadoc,sonar:run">
 		<delete dir = "bin"/>
 		<delete dir = "classes"/>

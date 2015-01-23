@@ -41,7 +41,7 @@ public class Groupe {
     }
     /**
      * Permet d'accéder à la liste des pierres du groupe.
-     * @return de type List<Case> : La liste des pierres.
+     * @return de type List(Case) : La liste des pierres.
      */
     public List<Case> getPierres(){
         return pierres;
@@ -55,7 +55,7 @@ public class Groupe {
     }
     /**
      * Permet de calculer les libertés de l'ensemble des cases d'un groupe.
-     * @return de type List<Case> : Les cases correspondants aux libertés du groupe.
+     * @return de type List(Case) : Les cases correspondants aux libertés du groupe.
      */
     public List<Case> getLiberte(){
         Set<Case> libSet = new HashSet<>();

@@ -96,7 +96,7 @@ public class Goban {
     /**
      * Permet d'accéder aux cases autour d'une case.
      * @param pos de type Case : La case étudiée.
-     * @return de type List<Case> : La liste des cases autour de pos.
+     * @return de type List(Case) : La liste des cases autour de pos.
      */
     public List<Case> getCasesAutourDe(Case pos){
         List<Case> a= new ArrayList<>();
@@ -116,7 +116,7 @@ public class Goban {
     }
     /**
      * Permet d'accéder aux groupes du plateua de jeu.
-     * @return de type List<Groupe> : La liste des groupes du plateau.
+     * @return de type List(Groupe) : La liste des groupes du plateau.
      */
     public List<Groupe> getGroupes() {
         return groupes;
